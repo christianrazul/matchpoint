@@ -18,8 +18,8 @@ const ScoreboardPage = () => {
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <ScoreBox player={1} />
-        <ScoreBox player={2} />
+        <ScoreBox player={1} maxScore={11} />
+        <ScoreBox player={2} maxScore={11} />
       </div>
     </>
   );
