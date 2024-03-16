@@ -1,7 +1,12 @@
-import React from 'react';
+import ModeSelector from '../components/ModeSelector';
 
 const LandingPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Match Point</h1>
+      <ModeSelector />
+    </div>
+  );
 };
 
 export default LandingPage;
