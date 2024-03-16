@@ -1,3 +1,4 @@
+import BottomNav from '../components/BottomNav';
 import ModeSelector from '../components/ModeSelector';
 
 const LandingPage = () => {
@@ -5,6 +6,8 @@ const LandingPage = () => {
     <div>
       <h1>Match Point</h1>
       <ModeSelector />
+
+      <BottomNav />
     </div>
   );
 };

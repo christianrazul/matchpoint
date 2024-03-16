@@ -1,7 +1,7 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage';
-import ScoreboardPage from './pages/ScoreboardPage';
+import ScoreboardPage from './pages/ScoreboardPage/ScoreboardPage';
 
 function App() {
   return (

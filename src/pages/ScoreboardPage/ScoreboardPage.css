@@ -1,0 +1,16 @@
+.tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.tips h4 {
+  margin: 0;
+}
+
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
