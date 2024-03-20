@@ -2,6 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Button, IconButton } from '@mui/material';
+import { ResetTvRounded, RestartAltOutlined, UndoOutlined } from '@mui/icons-material';
+import { useState } from 'react';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -19,10 +22,11 @@ const style = {
 interface Props {
   hasWon: boolean;
   playerID: number;
+  onResetClick: (willReset: boolean) => void;
 }
 
-export default function BasicModal({ hasWon, playerID }: Props) {
-  const [open, setOpen] = React.useState(hasWon);
+export default function BasicModal({ hasWon, playerID, onResetClick }: Props) {
+  const [open, setOpen] = useState(hasWon);
   const handleClose = () => setOpen(false);
 
   return (
@@ -40,6 +44,16 @@ export default function BasicModal({ hasWon, playerID }: Props) {
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
             Good job!
           </Typography>
+          <IconButton
+            onClick={() => {
+              onResetClick(true);
+              handleClose();
+            }}
+            size='large'
+            color='inherit'
+          >
+            <RestartAltOutlined fontSize='inherit' />
+          </IconButton>
         </Box>
       </Modal>
     </div>
