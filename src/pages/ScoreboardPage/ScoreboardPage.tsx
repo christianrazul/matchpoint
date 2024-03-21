@@ -1,6 +1,6 @@
 import ScoreBox from '../../components/ScoreBox';
 import '../ScoreboardPage/ScoreboardPage.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ScoreboardWinner from '../../components/ScoreboardWinnerModal/ScoreboardWinnerModal.tsx';
 
 const ScoreboardPage = () => {
@@ -8,13 +8,19 @@ const ScoreboardPage = () => {
   const [hasWon, setHasWon] = useState(false);
   const [reset, setReset] = useState(false);
 
+  useEffect(() => {
+    if (reset === true) {
+      setWinner(0);
+      setHasWon(false);
+      setReset(false);
+    }
+  }, [reset]);
+
   return (
     <>
       <div>
         <h1 style={{ margin: '0' }}>Scoreboard</h1>
         <div className='tips'>
-          <h4>Press once to add</h4>
-          <h4>Hold for 2s to remove</h4>
           {winner !== 0 ? (
             <ScoreboardWinner hasWon={hasWon} playerID={winner} onResetClick={reset => setReset(reset)} />
           ) : null}

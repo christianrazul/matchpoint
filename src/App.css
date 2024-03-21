@@ -55,4 +55,23 @@
 
 .bottomNav {
   width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.scoreBox {
+  width: 358px;
+  height: 302px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.scoreBox h1 {
+  font-size: 5rem;
+}
+
+.scoreBox h2 {
+  margin: 0;
 }

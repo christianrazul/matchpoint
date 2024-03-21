@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const BottomNav = () => {
   return (
-    <Paper elevation={3} className='bottomNav' style={{ position: 'fixed', bottom: 0 }}>
+    <Paper elevation={3} className='bottomNav'>
       <BottomNavigation showLabels>
         <BottomNavigationAction label='Home' icon={<HomeOutlined />} />
         <BottomNavigationAction label='Tournament' icon={<EmojiEventsOutlined />} />
