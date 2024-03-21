@@ -1,13 +1,13 @@
 import ScoreBox from '../../components/ScoreBox';
 import '../ScoreboardPage/ScoreboardPage.css';
-import BottomNav from '../../components/BottomNav';
 import { useState } from 'react';
-import ScoreboardWinner from '../../components/ScoreboardWinnerModal';
+import ScoreboardWinner from '../../components/ScoreboardWinnerModal/ScoreboardWinnerModal.tsx';
 
 const ScoreboardPage = () => {
   const [winner, setWinner] = useState(0);
   const [hasWon, setHasWon] = useState(false);
   const [reset, setReset] = useState(false);
+
   return (
     <>
       <div>
@@ -15,7 +15,6 @@ const ScoreboardPage = () => {
         <div className='tips'>
           <h4>Press once to add</h4>
           <h4>Hold for 2s to remove</h4>
-          {/* If winner exists, return true to show modal */}
           {winner !== 0 ? (
             <ScoreboardWinner hasWon={hasWon} playerID={winner} onResetClick={reset => setReset(reset)} />
           ) : null}
@@ -28,7 +27,6 @@ const ScoreboardPage = () => {
           onWinner={winner => {
             setWinner(winner);
             setHasWon(true);
-            // hasWon(hasWon);
           }}
           reset={reset}
         />
@@ -42,7 +40,6 @@ const ScoreboardPage = () => {
           reset={reset}
         />
       </div>
-      <BottomNav />
     </>
   );
 };
@@ -50,8 +47,4 @@ const ScoreboardPage = () => {
 export default ScoreboardPage;
 
 // TODO:
-// 1. Build the controls to remove points
-// 2. Build the controls to reset the game
-// 3. Build the form that accepts player IDs and max score
-// 4. Build the logic to handle the form submission
-// 5.
+// 1. Add a reset button to reset the scores and make sure it works properly

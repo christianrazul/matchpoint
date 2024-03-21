@@ -19,12 +19,6 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (hasWon === true) {
-  //     setScore(0);
-  //   }
-  // }, [hasWon]);
-
   // effect that resets the score when reset is true
   useEffect(() => {
     if (reset === true) {
