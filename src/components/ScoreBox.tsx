@@ -5,7 +5,7 @@ import { Player } from '../pages/ScoreboardPage/ScoreboardPage';
 interface Props {
   player: Player;
   maxScore: number;
-  onWinner: (player: number) => void;
+  onWinner: (player: Player) => void;
   hasWon?: boolean;
   reset: boolean;
 }
@@ -23,7 +23,7 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
   const addScore = () => {
     setScore(score + 1);
     if (score === maxScore) {
-      onWinner(player.playerId);
+      onWinner(player);
     }
   };
 

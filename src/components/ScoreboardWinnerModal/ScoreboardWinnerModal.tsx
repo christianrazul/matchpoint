@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 import { RestartAltOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import './ScoreboardWinnerModal.css';
+import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
 
 const style = {
   position: 'absolute',
@@ -25,11 +26,11 @@ const style = {
 
 interface Props {
   hasWon: boolean;
-  playerID: number;
+  winner: Player;
   onResetClick: (willReset: boolean) => void;
 }
 
-export default function BasicModal({ hasWon, playerID, onResetClick }: Props) {
+export default function BasicModal({ hasWon, winner, onResetClick }: Props) {
   const [open, setOpen] = useState(hasWon);
   const handleClose = () => setOpen(false);
 
@@ -37,7 +38,7 @@ export default function BasicModal({ hasWon, playerID, onResetClick }: Props) {
     <Modal open={open} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
       <Box sx={style}>
         <Typography id='modal-modal-title' variant='h2'>
-          Player {playerID} won!
+          {winner.name} won!
         </Typography>
         <Typography id='modal-modal-description' sx={{ mt: 2 }}>
           Nice chamba

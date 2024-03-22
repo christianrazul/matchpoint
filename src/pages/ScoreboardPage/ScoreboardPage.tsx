@@ -9,27 +9,33 @@ export interface Player {
   color: string;
 }
 
-const ScoreboardPage = () => {
-  const players: Player[] = [
-    {
-      playerId: 1,
-      name: 'Raffy',
-      color: '#228BE6',
-    },
-    {
-      playerId: 2,
-      name: 'Wico',
-      color: '#FA5252',
-    },
-  ];
+const players: Player[] = [
+  {
+    playerId: 1,
+    name: 'Raffy',
+    color: '#228BE6',
+  },
+  {
+    playerId: 2,
+    name: 'Wico',
+    color: '#FA5252',
+  },
+];
 
-  const [winner, setWinner] = useState(0);
+const initialPlayerState = {
+  playerId: 0,
+  name: '',
+  color: '',
+};
+
+const ScoreboardPage = () => {
+  const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
   const [reset, setReset] = useState(false);
 
   useEffect(() => {
     if (reset === true) {
-      setWinner(0);
+      setWinner(initialPlayerState);
       setHasWon(false);
       setReset(false);
     }
@@ -40,8 +46,8 @@ const ScoreboardPage = () => {
       <div>
         <h1 style={{ margin: '0', color: 'black' }}>Scoreboard</h1>
         <div className='tips'>
-          {winner !== 0 ? (
-            <ScoreboardWinner hasWon={hasWon} playerID={winner} onResetClick={reset => setReset(reset)} />
+          {winner.playerId !== 0 ? (
+            <ScoreboardWinner hasWon={hasWon} winner={winner} onResetClick={reset => setReset(reset)} />
           ) : null}
         </div>
       </div>
@@ -49,8 +55,8 @@ const ScoreboardPage = () => {
         <ScoreBox
           player={players[0]}
           maxScore={5}
-          onWinner={winner => {
-            setWinner(winner);
+          onWinner={player => {
+            setWinner(player);
             setHasWon(true);
           }}
           reset={reset}
@@ -58,8 +64,8 @@ const ScoreboardPage = () => {
         <ScoreBox
           player={players[1]}
           maxScore={5}
-          onWinner={winner => {
-            setWinner(winner);
+          onWinner={player => {
+            setWinner(player);
             setHasWon(true);
           }}
           reset={reset}
