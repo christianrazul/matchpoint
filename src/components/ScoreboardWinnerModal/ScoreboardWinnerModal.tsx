@@ -11,12 +11,16 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 300,
-  bgcolor: 'green',
+  width: '100%',
+  height: '100%',
   boxShadow: 24,
   p: 4,
   borderRadius: 2,
   textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 interface Props {
@@ -32,7 +36,7 @@ export default function BasicModal({ hasWon, playerID, onResetClick }: Props) {
   return (
     <Modal open={open} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
       <Box sx={style}>
-        <Typography id='modal-modal-title' variant='h6' component='h2'>
+        <Typography id='modal-modal-title' variant='h2'>
           Player {playerID} won!
         </Typography>
         <Typography id='modal-modal-description' sx={{ mt: 2 }}>

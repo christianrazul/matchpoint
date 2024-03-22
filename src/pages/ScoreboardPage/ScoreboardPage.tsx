@@ -3,7 +3,26 @@ import '../ScoreboardPage/ScoreboardPage.css';
 import { useEffect, useState } from 'react';
 import ScoreboardWinner from '../../components/ScoreboardWinnerModal/ScoreboardWinnerModal.tsx';
 
+export interface Player {
+  playerId: number;
+  name: string;
+  color: string;
+}
+
 const ScoreboardPage = () => {
+  const players: Player[] = [
+    {
+      playerId: 1,
+      name: 'Raffy',
+      color: '#228BE6',
+    },
+    {
+      playerId: 2,
+      name: 'Wico',
+      color: '#FA5252',
+    },
+  ];
+
   const [winner, setWinner] = useState(0);
   const [hasWon, setHasWon] = useState(false);
   const [reset, setReset] = useState(false);
@@ -19,7 +38,7 @@ const ScoreboardPage = () => {
   return (
     <>
       <div>
-        <h1 style={{ margin: '0' }}>Scoreboard</h1>
+        <h1 style={{ margin: '0', color: 'black' }}>Scoreboard</h1>
         <div className='tips'>
           {winner !== 0 ? (
             <ScoreboardWinner hasWon={hasWon} playerID={winner} onResetClick={reset => setReset(reset)} />
@@ -28,7 +47,7 @@ const ScoreboardPage = () => {
       </div>
       <div className='boxContainer'>
         <ScoreBox
-          player={1}
+          player={players[0]}
           maxScore={5}
           onWinner={winner => {
             setWinner(winner);
@@ -37,7 +56,7 @@ const ScoreboardPage = () => {
           reset={reset}
         />
         <ScoreBox
-          player={2}
+          player={players[1]}
           maxScore={5}
           onWinner={winner => {
             setWinner(winner);

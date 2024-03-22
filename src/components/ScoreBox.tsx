@@ -1,8 +1,9 @@
 import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Player } from '../pages/ScoreboardPage/ScoreboardPage';
 
 interface Props {
-  player: number;
+  player: Player;
   maxScore: number;
   onWinner: (player: number) => void;
   hasWon?: boolean;
@@ -11,18 +12,6 @@ interface Props {
 
 const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
   const [score, setScore] = useState(0);
-  const playerColor = player === 1 ? '#228BE6' : '#FA5252';
-
-  const addScore = () => {
-    setScore(score + 1);
-    if (score === maxScore) {
-      onWinner(player);
-    }
-  };
-
-  const removeScore = () => {
-    setScore(score - 1);
-  };
 
   // effect that resets the score when reset is true
   useEffect(() => {
@@ -31,9 +20,20 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
     }
   }, [reset]);
 
+  const addScore = () => {
+    setScore(score + 1);
+    if (score === maxScore) {
+      onWinner(player.playerId);
+    }
+  };
+
+  const removeScore = () => {
+    setScore(score - 1);
+  };
+
   return (
-    <div style={{ backgroundColor: playerColor }} className='scoreBox'>
-      <h2>PLAYER {player}</h2>
+    <div style={{ backgroundColor: player.color }} className='scoreBox'>
+      <h2>PLAYER {player.name}</h2>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           onClick={removeScore}
