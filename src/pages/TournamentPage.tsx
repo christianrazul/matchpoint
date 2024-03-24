@@ -2,8 +2,10 @@ import { Box } from '@mui/material';
 import TournamentBracket from '../components/TournamentBracket';
 import { players } from '../players';
 import ScoreBox from '../components/ScoreBox';
-import { Player, initialPlayerState } from './ScoreboardPage/ScoreboardPage';
+import { Player } from './ScoreboardPage/ScoreboardPage';
+
 import { useEffect, useState } from 'react';
+import { initialPlayerState } from '../components/Scoreboard/Scoreboard';
 
 const TournamentPage = () => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
