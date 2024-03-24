@@ -24,7 +24,11 @@ const TournamentBracket = ({ players, matchId, winner }: TournamentBracketProps)
             }
           >
             <Box className='playerName'>{player.name}</Box>
-            <Box className='playerScore'>{player.score !== undefined ? winner.score : initialScore}</Box>
+            <Box className='playerScore'>
+              {winner.score !== undefined && player.playerId === winner.playerId
+                ? winner.score
+                : player.score || initialScore}
+            </Box>
           </Box>
         ))}
       </Box>

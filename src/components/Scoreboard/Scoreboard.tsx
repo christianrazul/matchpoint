@@ -15,22 +15,22 @@ export const initialPlayerState: Player = {
 interface ScoreboardProps {
   players: Player[];
   maxScore: number;
-  winningPlayer?: (player: Player) => void;
+  winningPlayer: (player: Player) => void;
   hasWon?: boolean;
   reset?: boolean;
 }
 
-const Scoreboard = ({ players, maxScore }: ScoreboardProps) => {
+const Scoreboard = ({ players, maxScore, winningPlayer }: ScoreboardProps) => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
   const [resetScores, setResetScores] = useState(false);
 
   // effect that sets winningPlayer to the winner
-  // useEffect(() => {
-  //   if (hasWon) {
-  //     winningPlayer(winner => console.log(winner));
-  //   }
-  // }, [winner]);
+  useEffect(() => {
+    if (hasWon) {
+      winningPlayer({ playerId: winner.playerId, name: winner.name, color: winner.color, score: winner.score });
+    }
+  }, [winner]);
 
   // useEffect that resets the score when reset is true
   useEffect(() => {
