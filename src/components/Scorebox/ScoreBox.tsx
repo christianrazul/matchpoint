@@ -20,6 +20,13 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
     }
   }, [reset]);
 
+  // effect that sets the winner when the score reaches the max score
+  useEffect(() => {
+    if (score === maxScore) {
+      onWinner({ playerId: player.playerId, name: player.name, color: player.color, score: score });
+    }
+  }, [score]);
+
   const addScore = () => {
     setScore(score + 1);
     if (score === maxScore) {

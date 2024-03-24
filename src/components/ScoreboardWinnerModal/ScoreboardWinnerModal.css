@@ -1,12 +1,18 @@
-.winner-modal {
+.winnerModalContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 100%;
+  height: 100%;
+
   background-color: green;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
   padding: 16px;
   border-radius: 2px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

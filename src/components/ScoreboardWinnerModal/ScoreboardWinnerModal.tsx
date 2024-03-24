@@ -6,23 +6,7 @@ import { RestartAltOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import './ScoreboardWinnerModal.css';
 import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '100%',
-  height: '100%',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 2,
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
+import './ScoreboardWinnerModal.css';
 
 interface Props {
   hasWon: boolean;
@@ -36,7 +20,7 @@ export default function BasicModal({ hasWon, winner, resetScores }: Props) {
 
   return (
     <Modal open={open} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
-      <Box sx={style} bgcolor={winner.color}>
+      <Box className='winnerModalContainer' bgcolor={winner.color}>
         <Typography id='modal-modal-title' variant='h2'>
           {winner.name} won!
         </Typography>
