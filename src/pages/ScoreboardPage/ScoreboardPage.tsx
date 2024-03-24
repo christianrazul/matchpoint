@@ -10,13 +10,18 @@ export interface Player {
 
 const maxScore = 3;
 
+const testMatch = {
+  players: players,
+  maxScore: maxScore,
+};
+
 export const ScoreboardPage = () => {
   return (
     <>
       <div>
         <h1 className='title'>Scoreboard</h1>
       </div>
-      <Scoreboard players={players} maxScore={maxScore} />
+      <Scoreboard players={testMatch.players} maxScore={testMatch.maxScore} />
     </>
   );
 };
