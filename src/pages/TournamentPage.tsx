@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import TournamentBracket from '../components/TournamentBracket';
 import { players } from '../players';
-import ScoreBox from '../components/ScoreBox';
+import ScoreBox from '../components/Scorebox/ScoreBox';
 import { Player } from './ScoreboardPage/ScoreboardPage';
 
 import { useEffect, useState } from 'react';

@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { Player } from '../pages/ScoreboardPage/ScoreboardPage';
-
+import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
+import './ScoreBox.css';
 interface Props {
   player: Player;
   maxScore: number;
@@ -32,26 +32,18 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
   };
 
   return (
-    <div style={{ backgroundColor: player.color }} className='scoreBox'>
-      <h2>PLAYER {player.name}</h2>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button
-          onClick={removeScore}
-          style={{ fontSize: '52px', color: 'white', width: '100%', height: '100%' }}
-          disabled={score === 0}
-        >
+    <Box bgcolor={player.color} className='scoreboxContainer'>
+      <h2>{player.name}</h2>
+      <Box className='scorebox'>
+        <Button onClick={removeScore} className='buttons' disabled={score === 0}>
           -
         </Button>
         <h1>{score}</h1>
-        <Button
-          onClick={addScore}
-          style={{ fontSize: '52px', color: 'white', width: '100%', height: '100%' }}
-          disabled={score > maxScore || hasWon}
-        >
+        <Button onClick={addScore} className='buttons' disabled={score > maxScore || hasWon}>
           +
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 

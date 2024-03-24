@@ -1,11 +1,8 @@
 import { Box, Stack } from '@mui/material';
-import ScoreBox from '../ScoreBox';
-import { players } from '../../players';
+import ScoreBox from '../Scorebox/ScoreBox';
 import { useEffect, useState } from 'react';
 import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
 import './Scoreboard.css';
-
-const maxScore = 3;
 
 export const initialPlayerState: Player = {
   playerId: 0,
@@ -14,7 +11,15 @@ export const initialPlayerState: Player = {
   score: 0,
 };
 
-const Scoreboard = () => {
+interface ScoreboardProps {
+  players: Player[];
+  maxScore: number;
+  onWinner: (player: Player) => void;
+  hasWon?: boolean;
+  reset?: boolean;
+}
+
+const Scoreboard = ({ players, maxScore, onWinner, reset }: ScoreboardProps) => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
   const [resetScores, setResetScores] = useState(false);

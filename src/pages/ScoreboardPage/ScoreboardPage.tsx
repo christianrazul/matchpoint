@@ -1,10 +1,8 @@
-import ScoreBox from '../../components/ScoreBox';
 import '../ScoreboardPage/ScoreboardPage.css';
-import { useEffect, useState } from 'react';
-import ScoreboardWinnerModal from '../../components/ScoreboardWinnerModal';
-import { players } from '../../players';
 import Scoreboard from '../../components/Scoreboard';
-
+import { players } from '../../players';
+import { useState } from 'react';
+import { initialPlayerState } from '../../components/Scoreboard/Scoreboard';
 export interface Player {
   playerId: number;
   name: string;
@@ -12,8 +10,10 @@ export interface Player {
   score?: number;
 }
 
+const maxScore = 3;
+
 export const ScoreboardPage = () => {
-  // const [winner, setWinner] = useState<Player>(initialPlayerState);
+  const [winner, setWinner] = useState<Player>(initialPlayerState);
   // const [hasWon, setHasWon] = useState(false);
   // const [resetScores, setResetScores] = useState(false);
 
@@ -32,7 +32,7 @@ export const ScoreboardPage = () => {
           <ScoreboardWinnerModal hasWon={hasWon} winner={winner} resetScores={reset => setResetScores(reset)} />
         ) : null} */}
       </div>
-      <Scoreboard />
+      <Scoreboard players={players} maxScore={maxScore} onWinner={winner => setWinner(winner)} />
       {/* <div className='boxContainer'>
         <ScoreBox
           player={players[0]}

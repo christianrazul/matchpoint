@@ -1,0 +1,28 @@
+.scorebox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  font-size: 52px !important;
+  color: white !important;
+  width: 100%;
+  height: 100%;
+}
+
+.scoreboxContainer {
+  width: 358px;
+  height: 302px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.scoreboxContainer h1 {
+  font-size: 5rem;
+}
+
+.scoreboxContainer h2 {
+  margin: 0;
+}
