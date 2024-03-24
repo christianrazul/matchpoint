@@ -1,4 +1,4 @@
-import { Player } from './pages/ScoreboardPage/ScoreboardPage';
+import { Player } from '../pages/ScoreboardPage/ScoreboardPage';
 
 export const players: Player[] = [
   {

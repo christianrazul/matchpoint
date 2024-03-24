@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import TournamentBracket from '../components/TournamentBracket';
-import { players } from '../players';
+import { players } from '../common/players';
 import ScoreBox from '../components/Scorebox/ScoreBox';
 import { Player } from './ScoreboardPage/ScoreboardPage';
 

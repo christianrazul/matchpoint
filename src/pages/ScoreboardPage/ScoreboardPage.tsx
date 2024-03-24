@@ -1,6 +1,6 @@
 import '../ScoreboardPage/ScoreboardPage.css';
 import Scoreboard from '../../components/Scoreboard';
-import { players } from '../../players';
+import { players } from '../../common/players';
 export interface Player {
   playerId: number;
   name: string;
