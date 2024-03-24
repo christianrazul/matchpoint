@@ -1,53 +1,42 @@
 import ScoreBox from '../../components/ScoreBox';
 import '../ScoreboardPage/ScoreboardPage.css';
 import { useEffect, useState } from 'react';
-import ScoreboardWinner from '../../components/ScoreboardWinnerModal/ScoreboardWinnerModal.tsx';
+import ScoreboardWinnerModal from '../../components/ScoreboardWinnerModal';
+import { players } from '../../players';
 
 export interface Player {
   playerId: number;
   name: string;
   color: string;
+  score?: number;
 }
 
-const players: Player[] = [
-  {
-    playerId: 1,
-    name: 'Raffy',
-    color: '#228BE6',
-  },
-  {
-    playerId: 2,
-    name: 'Wico',
-    color: '#FA5252',
-  },
-];
-
-const initialPlayerState = {
+export const initialPlayerState: Player = {
   playerId: 0,
   name: '',
   color: '',
+  score: 0,
 };
 
-const ScoreboardPage = () => {
+export const ScoreboardPage = () => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
-  const [reset, setReset] = useState(false);
+  const [resetScores, setResetScores] = useState(false);
 
   useEffect(() => {
-    if (reset === true) {
+    if (resetScores) {
       setWinner(initialPlayerState);
       setHasWon(false);
-      setReset(false);
+      setResetScores(false);
     }
-  }, [reset]);
-
+  }, [resetScores]);
   return (
     <>
       <div>
-        <h1 style={{ margin: '0', color: 'black' }}>Scoreboard</h1>
-        <div className='tips'>
+        <h1 className='title'>Scoreboard</h1>
+        <div>
           {winner.playerId !== 0 ? (
-            <ScoreboardWinner hasWon={hasWon} winner={winner} onResetClick={reset => setReset(reset)} />
+            <ScoreboardWinnerModal hasWon={hasWon} winner={winner} resetScores={reset => setResetScores(reset)} />
           ) : null}
         </div>
       </div>
@@ -59,7 +48,7 @@ const ScoreboardPage = () => {
             setWinner(player);
             setHasWon(true);
           }}
-          reset={reset}
+          reset={resetScores}
         />
         <ScoreBox
           player={players[1]}
@@ -68,7 +57,7 @@ const ScoreboardPage = () => {
             setWinner(player);
             setHasWon(true);
           }}
-          reset={reset}
+          reset={resetScores}
         />
       </div>
     </>

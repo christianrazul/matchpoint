@@ -1,0 +1,35 @@
+.tournamentBracketLabel {
+  color: black;
+  text-align: left;
+  margin: 0;
+}
+
+.tournamentBracket {
+  border: 2px solid black;
+  width: 200px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.tournamentBracketPlayer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.playerName,
+.playerScore {
+  color: black;
+}
+
+.winner {
+  background-color: lightgreen;
+}
+
+.winner .playerName,
+.winner .playerScore {
+  color: green;
+  font-weight: bold;
+}

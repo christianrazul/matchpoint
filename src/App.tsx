@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage';
-import ScoreboardPage from './pages/ScoreboardPage/ScoreboardPage';
+import ScoreboardPage from './pages/ScoreboardPage';
 import TournamentPage from './pages/TournamentPage';
 import { Box } from '@mui/material';
 import BottomNav from './components/BottomNav';

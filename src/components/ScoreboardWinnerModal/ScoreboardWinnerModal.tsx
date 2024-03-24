@@ -27,16 +27,16 @@ const style = {
 interface Props {
   hasWon: boolean;
   winner: Player;
-  onResetClick: (willReset: boolean) => void;
+  resetScores: (reset: boolean) => void;
 }
 
-export default function BasicModal({ hasWon, winner, onResetClick }: Props) {
+export default function BasicModal({ hasWon, winner, resetScores }: Props) {
   const [open, setOpen] = useState(hasWon);
   const handleClose = () => setOpen(false);
 
   return (
     <Modal open={open} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
-      <Box sx={style}>
+      <Box sx={style} bgcolor={winner.color}>
         <Typography id='modal-modal-title' variant='h2'>
           {winner.name} won!
         </Typography>
@@ -45,7 +45,7 @@ export default function BasicModal({ hasWon, winner, onResetClick }: Props) {
         </Typography>
         <IconButton
           onClick={() => {
-            onResetClick(true);
+            resetScores(true);
             handleClose();
           }}
           size='large'
