@@ -20,18 +20,19 @@ interface ScoreboardProps {
   reset?: boolean;
 }
 
-const Scoreboard = ({ players, maxScore, reset }: ScoreboardProps) => {
+const Scoreboard = ({ players, maxScore }: ScoreboardProps) => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
   const [resetScores, setResetScores] = useState(false);
 
+  // effect that sets winningPlayer to the winner
   // useEffect(() => {
-  //   if (winner.playerId !== 0) {
-  //     winningPlayer(winner);
+  //   if (hasWon) {
+  //     winningPlayer(winner => console.log(winner));
   //   }
   // }, [winner]);
 
-  // effect that resets the score when reset is true
+  // useEffect that resets the score when reset is true
   useEffect(() => {
     if (resetScores) {
       setWinner(initialPlayerState);
@@ -43,11 +44,7 @@ const Scoreboard = ({ players, maxScore, reset }: ScoreboardProps) => {
   return (
     <Box>
       {winner.playerId !== 0 ? (
-        <ScoreboardWinnerModal
-          hasWon={winner.playerId !== 0 ? true : false}
-          winner={winner}
-          resetScores={reset => setResetScores(reset)}
-        />
+        <ScoreboardWinnerModal hasWon={hasWon} winner={winner} resetScores={reset => setResetScores(reset)} />
       ) : null}
       <Stack className='boxContainer'>
         <ScoreBox
