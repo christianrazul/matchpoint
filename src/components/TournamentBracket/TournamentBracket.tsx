@@ -2,32 +2,33 @@ import { Box } from '@mui/material';
 import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
 import './TournamentBracket.css';
 import { useState } from 'react';
+import { Match } from '../Scoreboard/Scoreboard';
 
 interface TournamentBracketProps {
   players: Player[];
-  matchId: number;
-  winner: Player;
+  match: Match;
+  // winner: Player;
 }
 
-const TournamentBracket = ({ players, matchId, winner }: TournamentBracketProps) => {
+const TournamentBracket = ({ players, match }: TournamentBracketProps) => {
   const [initialScore, setInitialScore] = useState(0);
+
+  console.log(match);
 
   return (
     <>
-      <h4 className='tournamentBracketLabel'>Match {matchId}</h4>
+      <h4 className='tournamentBracketLabel'>Match {match.id}</h4>
       <Box onClick={() => console.log('Bracket clicked')} className='tournamentBracket'>
-        {players.map(player => (
+        {match.players.map(player => (
           <Box
             key={player.playerId}
             className={
-              player.playerId === winner.playerId ? 'tournamentBracketPlayer winner' : 'tournamentBracketPlayer'
+              player.playerId === match.winner?.playerId ? 'tournamentBracketPlayer winner' : 'tournamentBracketPlayer'
             }
           >
             <Box className='playerName'>{player.name}</Box>
             <Box className='playerScore'>
-              {winner.score !== undefined && player.playerId === winner.playerId
-                ? winner.score
-                : player.score || initialScore}
+              {player.playerId === match.winner?.playerId ? match.winner.score : match.loser?.score}
             </Box>
           </Box>
         ))}
