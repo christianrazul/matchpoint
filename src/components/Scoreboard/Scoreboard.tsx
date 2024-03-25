@@ -28,9 +28,9 @@ const Scoreboard = ({ players, maxScore, winningPlayer }: ScoreboardProps) => {
   // effect that sets winningPlayer to the winner
   useEffect(() => {
     if (hasWon) {
-      winningPlayer({ playerId: winner.playerId, name: winner.name, color: winner.color, score: winner.score });
+      winningPlayer(winner);
     }
-  }, [winner]);
+  }, [hasWon]);
 
   // useEffect that resets the score when reset is true
   useEffect(() => {
@@ -43,7 +43,7 @@ const Scoreboard = ({ players, maxScore, winningPlayer }: ScoreboardProps) => {
 
   return (
     <Box>
-      {winner.playerId !== 0 ? (
+      {hasWon ? (
         <ScoreboardWinnerModal hasWon={hasWon} winner={winner} resetScores={reset => setResetScores(reset)} />
       ) : null}
       <Stack className='boxContainer'>

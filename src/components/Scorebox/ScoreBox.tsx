@@ -20,7 +20,6 @@ const ScoreBox = ({ player, maxScore, onWinner, hasWon, reset }: Props) => {
     }
   }, [reset]);
 
-  // effect that sets the
   const addScore = () => {
     setScore(score + 1);
     if (score === maxScore) {
