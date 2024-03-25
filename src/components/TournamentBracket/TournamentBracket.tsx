@@ -1,18 +1,13 @@
 import { Box } from '@mui/material';
-import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
 import './TournamentBracket.css';
-import { useState } from 'react';
 import { Match } from '../Scoreboard/Scoreboard';
 
 interface TournamentBracketProps {
-  players: Player[];
   match: Match;
   // winner: Player;
 }
 
-const TournamentBracket = ({ players, match }: TournamentBracketProps) => {
-  const [initialScore, setInitialScore] = useState(0);
-
+const TournamentBracket = ({ match }: TournamentBracketProps) => {
   console.log(match);
 
   return (

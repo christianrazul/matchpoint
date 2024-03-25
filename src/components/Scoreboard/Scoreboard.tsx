@@ -2,7 +2,6 @@ import { Box, Stack } from '@mui/material';
 import ScoreBox from '../Scorebox/ScoreBox';
 import { useEffect, useState } from 'react';
 import { Player } from '../../pages/ScoreboardPage/ScoreboardPage';
-import { match } from '../../common/match';
 import './Scoreboard.css';
 import ScoreboardWinnerModal from '../ScoreboardWinnerModal';
 
@@ -31,24 +30,16 @@ export interface Match {
 interface ScoreboardProps {
   players: Player[];
   maxScore: number;
-  winningPlayer: (player: Player) => void;
   match?: (match: Match) => void;
   hasWon?: boolean;
   reset?: boolean;
 }
 
-const Scoreboard = ({ players, maxScore, winningPlayer, match }: ScoreboardProps) => {
+const Scoreboard = ({ players, maxScore, match }: ScoreboardProps) => {
   const [winner, setWinner] = useState<Player>(initialPlayerState);
   const [loser, setLoser] = useState<Player>(initialPlayerState);
   const [hasWon, setHasWon] = useState(false);
   const [resetScores, setResetScores] = useState(false);
-
-  // effect that sets winningPlayer to the winner
-  useEffect(() => {
-    if (hasWon && match) {
-      winningPlayer(winner);
-    }
-  }, [hasWon]);
 
   useEffect(() => {
     if (winner.score === maxScore) {
@@ -70,13 +61,13 @@ const Scoreboard = ({ players, maxScore, winningPlayer, match }: ScoreboardProps
     if (hasWon && match !== undefined) {
       match({ id: 1, players: players, winner: winner, loser: loser, finished: true });
     }
-  }, [match]);
+  }, [loser]);
 
   return (
     <Box>
-      {/* {hasWon ? (
+      {hasWon ? (
         <ScoreboardWinnerModal hasWon={hasWon} winner={winner} resetScores={reset => setResetScores(reset)} />
-      ) : null} */}
+      ) : null}
       <Stack className='boxContainer'>
         <ScoreBox
           player={players[0]}
