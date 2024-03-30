@@ -55,6 +55,7 @@ const TournamentForm = () => {
             id='standard-basic'
             label='Goal Score'
             variant='outlined'
+            type='number'
             fullWidth
             required
             {...register('maxScore', {
@@ -69,6 +70,7 @@ const TournamentForm = () => {
               id='tournament-type-select'
               value={tournamentType}
               label='Tournament Type'
+              type='select'
               {...register('tournamentType', {
                 required: 'Tournament Type is required',
               })}

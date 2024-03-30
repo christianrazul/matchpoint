@@ -4,6 +4,5 @@
 }
 
 .tournament-button {
-  margin-top: 2.5rem;
-  cursor: pointer;
+  margin-top: 2.5rem !important;
 }
