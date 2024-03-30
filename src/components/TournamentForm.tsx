@@ -80,7 +80,7 @@ const TournamentForm = () => {
             </Select>
           </FormControl>
           <Stack direction={'row'} spacing={2}>
-            <NavLink to='/scoreboard' style={{ width: '100%' }}>
+            <NavLink to='/' style={{ width: '100%' }}>
               <Button type='button' variant='outlined' fullWidth>
                 Back
               </Button>

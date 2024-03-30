@@ -2,3 +2,8 @@
   font-size: 2.5rem;
   color: black;
 }
+
+.tournament-button {
+  margin-top: 2.5rem;
+  cursor: pointer;
+}
