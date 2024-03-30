@@ -11,6 +11,9 @@ interface Props {
   reset?: boolean;
 }
 
+// TODO: refactor player prop to get data from match (if available) or settings (to make)
+// TODO: refactor maxScore prop to get data from match (if available) or settings (to make)
+
 const ScoreBox = ({ player, maxScore, onWinner, onLoser, hasWon, reset }: Props) => {
   const [score, setScore] = useState(0);
 

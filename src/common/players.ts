@@ -11,4 +11,14 @@ export const players: Player[] = [
     name: 'Wico',
     color: '#FA5252',
   },
+  {
+    playerId: 3,
+    name: 'Andrei',
+    color: '#12B886',
+  },
+  {
+    playerId: 4,
+    name: 'Joma',
+    color: '#F783AC',
+  },
 ];

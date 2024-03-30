@@ -11,7 +11,7 @@ export interface Player {
 
 const maxScore = 5;
 
-const testMatch = {
+export const testMatch = {
   players: players,
   maxScore: maxScore,
 };

@@ -70,6 +70,7 @@ const Scoreboard = ({ players, maxScore, match }: ScoreboardProps) => {
       ) : null}
       <Stack className='boxContainer'>
         <ScoreBox
+          // TODO: refactor player prop to get data from match (if available) or settings (to make)
           player={players[0]}
           maxScore={maxScore}
           onWinner={player => {
