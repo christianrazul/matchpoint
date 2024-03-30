@@ -11,7 +11,11 @@ type FormValues = {
   tournamentType: string;
 };
 
-const TournamentForm = () => {
+interface TournamentFormProps {
+  formDataProps: (data: FormValues) => void;
+}
+
+const TournamentForm = ({ formDataProps }: TournamentFormProps) => {
   const [tournamentType, setTournamentType] = useState('');
 
   const form = useForm<FormValues>({
@@ -27,7 +31,7 @@ const TournamentForm = () => {
   const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
-    console.log(data);
+    formDataProps(data);
   };
 
   const handleChange = (event: SelectChangeEvent) => {
