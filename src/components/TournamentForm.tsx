@@ -1,15 +1,18 @@
 import { TextField, Button, Stack, InputLabel, Select, MenuItem, SelectChangeEvent, FormControl } from '@mui/material';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import '../App.css';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { z } from 'zod';
 
-type FormValues = {
-  playerCount: number;
-  maxScore: number;
-  tournamentType: string;
-};
+const schema = z.object({
+  playerCount: z.number().min(2),
+  maxScore: z.number().min(1),
+  tournamentType: z.string(),
+});
+
+export type FormValues = z.infer<typeof schema>;
 
 interface TournamentFormProps {
   formDataProps: (data: FormValues) => void;
@@ -18,7 +21,12 @@ interface TournamentFormProps {
 const TournamentForm = ({ formDataProps }: TournamentFormProps) => {
   const [tournamentType, setTournamentType] = useState('');
 
-  const form = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<FormValues>({
     defaultValues: {
       playerCount: 2,
       maxScore: 1,
@@ -26,11 +34,7 @@ const TournamentForm = ({ formDataProps }: TournamentFormProps) => {
     },
   });
 
-  const { register, handleSubmit, formState, control } = form;
-
-  const { errors } = formState;
-
-  const onSubmit = (data: FormValues) => {
+  const onSubmit: SubmitHandler<FormValues> = data => {
     formDataProps(data);
   };
 
@@ -49,9 +53,7 @@ const TournamentForm = ({ formDataProps }: TournamentFormProps) => {
             type='number'
             fullWidth
             required
-            {...register('playerCount', {
-              required: 'Player count is required',
-            })}
+            {...register('playerCount')}
             error={!!errors.playerCount}
             helperText={errors.playerCount?.message}
           />
@@ -62,9 +64,7 @@ const TournamentForm = ({ formDataProps }: TournamentFormProps) => {
             type='number'
             fullWidth
             required
-            {...register('maxScore', {
-              required: 'Max Score is required',
-            })}
+            {...register('maxScore')}
             error={!!errors.maxScore}
             helperText={errors.maxScore?.message}
           />
