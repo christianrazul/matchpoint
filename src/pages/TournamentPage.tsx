@@ -1,23 +1,20 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { Match, initialMatchState } from '../components/Scoreboard/Scoreboard';
+import Scoreboard, { Match, initialMatchState } from '../components/Scoreboard/Scoreboard';
 import TournamentForm, { FormValues } from '../components/TournamentForm';
 import { players } from '../common/players';
 import TournamentBracket from '../components/TournamentBracket';
+
 const TournamentPage = () => {
   const [matchDetails, setMatchDetails] = useState<Match>(initialMatchState);
+  const [bracketGenerated, setBracketGenerated] = useState<boolean>(false);
+  const [bracketClicked, setBracketClicked] = useState<boolean>(false);
 
   const [data, setData] = useState<FormValues>();
 
-  // id: number;
-  // players: Player[];
-  // winner?: Player;
-  // loser?: Player;
-  // finished: boolean;
-
   const generateBracket = (match: Match) => {
     // generate bracket based on matchDetails
-    return <TournamentBracket match={matchDetails} />;
+    return <TournamentBracket match={matchDetails} clicked={status => setBracketClicked(status)} />;
   };
 
   useEffect(() => {
@@ -30,14 +27,17 @@ const TournamentPage = () => {
         players: randomPlayers,
         finished: false,
       });
-      console.log(matchDetails, 'Match');
+      console.log('Match Generated');
+      console.log(matchDetails);
+      setBracketGenerated(true);
     }
   }, [data]);
 
   return (
     <Box>
-      <TournamentForm formDataProps={formData => setData(formData)} />
+      {!bracketGenerated && <TournamentForm formDataProps={formData => setData(formData)} />}
       {data && generateBracket(matchDetails)}
+      {bracketClicked && <Scoreboard players={matchDetails.players} maxScore={3} />}
     </Box>
   );
 };
